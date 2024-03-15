@@ -14,6 +14,7 @@ import os
 import numpy as np
 from glob import glob
 import skimage.io as skio
+import cv2
 
 # Metrics
 from sklearn.metrics import f1_score, precision_score, confusion_matrix, accuracy_score
@@ -26,12 +27,61 @@ import matplotlib.pyplot as plt
 # Set up
 classes_cerradata = ['impervious_surface', 'building', 'low_vegetation', 'tree', 'car', 'background']
 
-lista_class = {'impervious_surface':0, 'building':1, 'low_vegetation':2, 'tree':3, 'car':4, 'background':5}
+lista_class = {'impervious_surface': 0, 'building': 1, 'low_vegetation': 2, 'tree': 3, 'car': 4, 'background': 5}
 
 lista_class_r = {value: key for key, value in zip(lista_class.keys(), lista_class.values())}
 
-
 # Metricas
+
+import numpy as np
+
+
+def calculate_iou(segmentation_pred, segmentation_true):
+    """
+    Calculate the Intersection over Union (IoU) for segmentation masks.
+
+    Arguments:
+    segmentation_pred -- Predicted segmentation mask (binary numpy array).
+    segmentation_true -- Ground truth segmentation mask (binary numpy array).
+
+    Returns:
+    iou -- Intersection over Union (IoU).
+    """
+    intersection = np.logical_and(segmentation_true, segmentation_pred)
+    union = np.logical_or(segmentation_true, segmentation_pred)
+    iou = np.sum(intersection) / np.sum(union)
+
+    return iou
+
+
+def dice_coefficient(predicted_mask, ground_truth_mask):
+    """
+  Função para calcular o Coeficiente de Dice entre duas máscaras.
+
+  Argumentos:
+    predicted_mask: Máscara prevista pelo algoritmo de segmentação.
+    ground_truth_mask: Máscara real do objeto de interesse.
+
+  Retorno:
+    Coeficiente de Dice entre as duas máscaras.
+  """
+
+    # Calcular a interseção entre as duas máscaras.
+    intersection = np.sum(predicted_mask * ground_truth_mask)
+
+    # Calcular a soma dos elementos de ambas as máscaras.
+    sum_masks = np.sum(predicted_mask) + np.sum(ground_truth_mask)
+
+    # Evitar divisão por zero.
+    if sum_masks == 0:
+        return 0
+
+    # Calcular o Coeficiente de Dice.
+    dice = (2 * intersection) / sum_masks
+
+    return dice
+
+
 def compute_iou(label, pred):
     unique_labels = np.unique(label)
     num_unique_labels = len(unique_labels)
@@ -110,32 +160,36 @@ def load_image(path):
 
         # Read Image
         raster = skio.imread(sample)
+        raster = np.array(raster).reshape(512, 512)
         patch.append(raster)
 
     return patch, name_file
 
 
 # Paths
-path_true = '../dataset/Potsdam_split/seg/'
-path_pred = '../models/deeplabv3plus/outputs_150epochs/'
+path_true = '../dataset/Potsdam/Potsdam_split_data2/test/seg/'
+path_pred = '../models/transnuseg/outputs/seg/'
 print('Dados lidos')
-y_true, name_ytrue = load_image(path_true + '*.png')
-y_pred, name_ypred = load_image(path_pred + '*.png')
+y_true, name_ytrue = load_image(path_true + '*.tif')
+y_pred, name_ypred = load_image(path_pred + '*.tif')
 
-y_pred = np.array(y_pred).astype('int32')
-y_true = np.array(y_true).astype('int32')
+y_pred = np.array(y_pred)
+y_true = np.array(y_true)
+
 print(np.unique(y_pred))
+
 print(y_true.shape)
 print(y_pred.shape)
 
 # Metrics
-"""
-# 1. IoU and mIoU
-iou, mean_iou_weighted = compute_mean_iou_weighted(y_true, y_pred)
-print('IoU: ', iou)
-print('mIoUw: ', mean_iou_weighted)
-"""
 
+# 1. IoU and mIoU
+# Converter as máscaras para tensors
+
+iou = calculate_iou(y_pred, y_true)
+print("IoU:", iou)
+
+"""
 # 2. F1-score
 f1score = f1_score(y_true.flatten(), y_pred.flatten(), average='weighted')
 print('F1-score:', float(f1score))
@@ -143,10 +197,10 @@ print('F1-score:', float(f1score))
 # 3. Accuracy
 acc = accuracy_score(y_true.flatten(), y_pred.flatten())
 print('Accuracy:', acc)
-
+"""
 # 4. Precision
-#precision = precision_score(y_true.flatten(), y_pred.flatten(), average='weighted')
-#sprint('Precision:', float(precision))
+# precision = precision_score(y_true.flatten(), y_pred.flatten(), average='weighted')
+# sprint('Precision:', float(precision))
 """
 # 5. Confusion Matrix
 confusionMatrix = confusion_matrix(y_true.flatten(), y_pred.flatten())
@@ -171,6 +225,35 @@ for i in range(confusionMatrix.shape[0]):
         plt.text(j, i, format(confusionMatrix[i, j], 'd'),
                  ha="center", va="center",
                  color="white" if confusionMatrix[i, j] > thresh else "black")
+
+plt.tight_layout()
+plt.show()
+"""
+"""
+# Cálculo da matriz de confusão
+confusionMatrix = confusion_matrix(y_true.flatten(), y_pred.flatten())
+
+# Criação da matriz de confusão em porcentagem
+confusionMatrixPercent = confusionMatrix.astype('float') / confusionMatrix.sum(axis=1)[:, np.newaxis] * 100
+
+# Plotar a matriz de confusão
+plt.figure(figsize=(8, 6))
+plt.imshow(confusionMatrixPercent, interpolation='nearest', cmap=plt.cm.Blues)
+plt.title('DeepLab Classification')
+plt.colorbar()
+classes = [0, 1, 2, 3, 4, 5]  # Substitua pelas classes reais do seu problema
+tick_marks = np.arange(len(classes))
+plt.xticks(tick_marks, classes, rotation=45)
+plt.yticks(tick_marks, classes)
+plt.ylabel('True')
+plt.xlabel('Predicted')
+
+# Adicione os valores da matriz em porcentagem nos quadrados
+for i in range(confusionMatrixPercent.shape[0]):
+    for j in range(confusionMatrixPercent.shape[1]):
+        plt.text(j, i, format(confusionMatrixPercent[i, j], '.2f') + '%',
+                 ha="center", va="center",
+                 color="white" if confusionMatrixPercent[i, j] > 50 else "black")
 
 plt.tight_layout()
 plt.show()

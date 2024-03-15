@@ -183,13 +183,13 @@ for img, instance_mask, semantic_mask, normal_edge_mask, cluster_edge_mask in te
     #skio.imsave(transnuseg_outputs + 'clu/' + 'transnuseg_pred_clu_' + str(i) + '.tif', y_pclu_max, check_contrast=False)
 
     # True
-    #semantic_mask = semantic_mask.argmax(1).cpu().numpy()
+    #semantic_mask = semantic_mask.cpu().numpy()
     #skio.imsave(transnuseg_true + 'seg/' + 'seg_' + str(i) + '.tif', semantic_mask, check_contrast=False)
     # ----
-    #normal_edge_mask = normal_edge_mask.argmax(1).cpu().numpy()
+    #normal_edge_mask = normal_edge_mask.cpu().numpy()
     #skio.imsave(transnuseg_true + 'edg/' + 'edg_' + str(i) + '.tif', normal_edge_mask, check_contrast=False)
     # ----
-    cluster_edge_mask = cluster_edge_mask.argmax(1).cpu().numpy()
+    cluster_edge_mask = cluster_edge_mask.cpu().numpy()
     skio.imsave(transnuseg_true + 'clu/' + 'clu_' + str(i) + '.tif', cluster_edge_mask, check_contrast=False)
 
     i=i+1
