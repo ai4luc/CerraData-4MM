@@ -1,2 +1,5 @@
 # buriti.ai
-A unified self-supervised transformer multi-task network
+Ongoing...
+
+
+Please, check the Project Proposal out shared with you. 
