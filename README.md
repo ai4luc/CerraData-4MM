@@ -2,4 +2,4 @@
 Ongoing...
 
 
-Please, check the Project Proposal out shared with you. 
+Please, check the Proposed Project out shared with you. 
