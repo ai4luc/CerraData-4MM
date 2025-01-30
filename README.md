@@ -1,5 +1,7 @@
+![image](visual_setup/Head.png)
+
 # CerraData-4MM
-...
+## A multimodal dataset on Cerrado for land use and land cover classification
 
 import kagglehub
 
