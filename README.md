@@ -50,9 +50,9 @@ CerraData-4MM comprises sets of SAR and MSI data, followed by semantic maps for 
 
 ---
 
-## How to use
+## How to Run Locally
 
-### Data downloading
+### Data Downloading
 You can download the dataset using the `kagglehub` Python package. Below is an example of how to download the latest version of the dataset:
 
 ```python
@@ -66,7 +66,7 @@ print("Path to dataset files:", path)
 ```
 
 
-### Data loading 
+### Data Loading 
 
 ```python
 import ...
@@ -74,16 +74,23 @@ import ...
 ```
 
 
-### Training using U-Net 
+### Run a model
 ```python
 import ...
 
 ```
 
 ---
-## Default scores
+## Standard Benchmarks
 
 ---
-## Reference it
+## Citation
+```
+It is not available.
+```
+---
+## Contact
+If you have any questions, please let us know at mateus.miranda@inpe.br
+
 
 
