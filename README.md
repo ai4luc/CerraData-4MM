@@ -21,6 +21,32 @@ CerraData-4MM integrates **SAR** and **multispectral imagery** from the **Sentin
   - **Level 1 (L1)**: 7 classes
   - **Level 2 (L2)**: 14 classes
 
+### Class Hierarchy
+
+The dataset contains two hierarchical levels of classes: **Level 1 (L1)** and **Level 2 (L2)**. Below is the complete list of classes and their corresponding IDs:
+
+| **L1**               | **ID** | **L2**                                | **ID** |
+|-----------------------|--------|---------------------------------------|--------|
+| Pasture              | 0      | Pasture                              | 0      |
+| Arboreal             | 1      | Primary Natural Vegetation           | 1      |
+| Agriculture          | 2      | Secondary Natural Vegetation         | 2      |
+| Mining               | 3      | Water body                           | 3      |
+| Building             | 4      | Mining                               | 4      |
+| Water body           | 5      | Urban area                           | 5      |
+| Other uses           | 6      | Other Built area                     | 6      |
+|                      |        | Forestry                             | 7      |
+|                      |        | Perennial Agriculture                | 8      |
+|                      |        | Semi-perennial Agriculture           | 9      |
+|                      |        | Temporary agriculture of 1 cycle     | 10     |
+|                      |        | Temporary agriculture of 1 + cycle   | 11     |
+|                      |        | Other Uses                           | 12     |
+|                      |        | Deforestation 2022                   | 13     |
+
+
+Text... 
+
+![image](visual_setup/Head.png)
+
 ---
 
 ## How to Download
@@ -34,3 +60,8 @@ import kagglehub
 path = kagglehub.dataset_download("cerranet/cerradata-4mm")
 
 print("Path to dataset files:", path)
+
+
+---
+
+## How to Download
