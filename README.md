@@ -44,12 +44,15 @@ The dataset contains two hierarchical levels of classes: **Level 1 (L1)** and **
 
 
 
+CerraData-4MM comprises sets of SAR and MSI data, followed by semantic maps for L1 and L2, respectively. The two class levels create a diverse and challenging dataset that covers categories of regeneration level, deforestation increment, as well as different types of agriculture. Each set contains 30,322 patches with a spatial resolution of 10 meters. This dataset provides a rich diversity of classes representative of the \textit{Bico do Papagaio} ecoregion. As illustrated in Figure below, L2 introduces five additional subcategories of agricultural types, one additional category for built areas, and two distinct vegetation generation classes. 
+
 ![image](visual_setup/dataset_git.png)
 
 ---
 
-## How to Download
+## How to use
 
+### Data downloading
 You can download the dataset using the `kagglehub` Python package. Below is an example of how to download the latest version of the dataset:
 
 ```python
@@ -62,9 +65,20 @@ print("Path to dataset files:", path)
 
 ```
 
----
 
-## How to use 
+### Data loading 
+
+```python
+import ...
+
+```
+
+
+### Training using U-Net 
+```python
+import ...
+
+```
 
 ---
 ## Default scores
