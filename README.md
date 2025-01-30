@@ -23,29 +23,28 @@ CerraData-4MM integrates **SAR** and **multispectral imagery** from the **Sentin
 
 ### Class Hierarchy
 
-The dataset contains two hierarchical levels of classes: **Level 1 (L1)** and **Level 2 (L2)**. Below is the complete list of classes and their corresponding IDs:
+The dataset contains two hierarchical levels of classes: **Level 1 (L1)** and **Level 2 (L2)**. Below is the complete list of classes, their corresponding IDs, and their RGB colors code.
 
-| **L1**               | **ID** | **L2**                                | **ID** |
-|-----------------------|--------|---------------------------------------|--------|
-| Pasture              | 0      | Pasture                              | 0      |
-| Arboreal             | 1      | Primary Natural Vegetation           | 1      |
-| Agriculture          | 2      | Secondary Natural Vegetation         | 2      |
-| Mining               | 3      | Water body                           | 3      |
-| Building             | 4      | Mining                               | 4      |
-| Water body           | 5      | Urban area                           | 5      |
-| Other uses           | 6      | Other Built area                     | 6      |
-|                      |        | Forestry                             | 7      |
-|                      |        | Perennial Agriculture                | 8      |
-|                      |        | Semi-perennial Agriculture           | 9      |
-|                      |        | Temporary agriculture of 1 cycle     | 10     |
-|                      |        | Temporary agriculture of 1 + cycle   | 11     |
-|                      |        | Other Uses                           | 12     |
-|                      |        | Deforestation 2022                   | 13     |
+| **L1 Class**      | **L1 ID** | **L2 Class**                                | **L2 ID** | **RGB Mask**   |
+|--------------------|-----------|---------------------------------------------|-----------|----------------|
+| Pasture           | 0         | Pasture (Pa)                                | 0         | 206, 239, 98   |
+| Forest            | 1         | Primary Natural Vegetation (V1)             | 1         | 22, 152, 13    |
+| Agriculture       | 2         | Secondary Natural Vegetation (V2)           | 2         | 31, 212, 18    |
+| Mining            | 3         | Mining (Mg)                                 | 4         | 176, 176, 176  |
+| Building          | 4         | Urban area (UA)                             | 5         | 223, 124, 38   |
+| Water body        | 5         | Water body (Wt)                             | 3         | 19, 50, 255    |
+| Other Uses        | 6         | Other Built area (OB)                       | 6         | 250, 128, 114  |
+|                   |           | Forestry (Ft)                               | 7         | 85, 107, 47    |
+|                   |           | Perennial Agriculture (PR)                  | 8         | 230, 32, 108   |
+|                   |           | Semi-perennial Agriculture (SP)             | 9         | 139, 105, 20   |
+|                   |           | Temporary agriculture of 1 cycle (T1)       | 10        | 255, 215, 0    |
+|                   |           | Temporary agriculture of 1+ cycle (T1+)     | 11        | 255, 255, 0    |
+|                   |           | Other Uses (OU)                             | 12        | 117, 10, 194   |
+|                   |           | Deforestation 2022 (Df)                     | 13        | 205, 0, 0      |
 
 
-Text... 
 
-![image](visual_setup/Head.png)
+![image](visual_setup/dataset_git.png)
 
 ---
 
@@ -61,7 +60,16 @@ path = kagglehub.dataset_download("cerranet/cerradata-4mm")
 
 print("Path to dataset files:", path)
 
+```
 
 ---
 
-## How to Download
+## How to use 
+
+---
+## Default scores
+
+---
+## Reference it
+
+
