@@ -25,7 +25,7 @@ CerraData-4MM integrates **SAR** and **multispectral imagery** from the **Sentin
 
 The dataset contains two hierarchical levels of classes: **Level 1 (L1)** and **Level 2 (L2)**. Below is the complete list of classes, their corresponding IDs, and their RGB colors code.
 
-| **L1 Class**      | **L1 ID** | **L2 Class**                                | **L2 ID** | **RGB Mask**   |
+| **L1 Class**      | **L1 ID** | **L2 Class**                                | **L2 ID** | **RGB**   |
 |--------------------|-----------|---------------------------------------------|-----------|----------------|
 | Pasture           | 0         | Pasture (Pa)                                | 0         | 206, 239, 98   |
 | Forest            | 1         | Primary Natural Vegetation (V1)             | 1         | 22, 152, 13    |
