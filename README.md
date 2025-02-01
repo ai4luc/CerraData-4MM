@@ -50,7 +50,7 @@ CerraData-4MM comprises sets of SAR and MSI data, followed by semantic maps for 
 
 ---
 
-## How to Run Locally
+## Tutorial
 
 ### Data Downloading
 You can download the dataset using the `kagglehub` Python package. Below is an example of how to download the latest version of the dataset:
@@ -67,21 +67,83 @@ print("Path to dataset files:", path)
 
 
 ### Data Loading 
+First, you can split the data into sub-directories for training, testing, and validating phases. Hence, consider the following code example: 
 
 ```python
-import ...
+import splitfolders
+
+# Split data into Train and testing
+
+input_folder = '../../cerradata-4mm/'
+output_folder = '../../cerradata4mm_exp/'
+
+# Ratio of split are in order of train/val/test.
+splitfolders.ratio(input_folder, output_folder, seed=42, ratio=(.9, .0, .1))
 
 ```
 
+Now, let's load the data! Find the function on the `dataset-loader` within the `CerraData-4MM Experiments/util/` directory, and then import the `MMDataset()` to read both modalities or `SARDataset()` `MSIDataset()` to read one of the modalities. In order to exemplify how to load the data, let's consider `MMDataset()`:
+
+```python
+import torch
+import os
+from torch.utils.data import DataLoader, random_split
+import numpy as np
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..', 'util')))
+from dataset_loader import MMDataset
+
+# GPU
+## On NVIDIA architecture
+device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
+
+## On Apple M chip architecture
+#device = torch.device("mps")
+
+# Path
+DATA_PATH = '../../cerradata4mm_exp/'
+
+# Data loading
+total_data = MMDataset(dir_path=DATA_PATH, gpu=device, norm='none') # norm: "none", "0to1", "1to1"
+
+# Split into Training and Validation phase
+train_set_size = int(len(total_data) * 0.8)
+val_set_size = len(total_data) - train_set_size
+train_set, val_set = random_split(total_data, [train_set_size, val_set_size], generator=torch.Generator().manual_seed(random_seed))
+
+trainloader = DataLoader(train_set, batch_size=batch_size, shuffle=True)
+valloader = DataLoader(val_set, batch_size=batch_size, shuffle=False)
+
+```
+
+Thus, you can implement it on your `train.py` file to train it. 
+
+
+### Training a model
+```python
+import os
+import numpy as np
+import torch
+from torch.utils.data import Dataset
+import random
+import glob
+import cv2
+import tifffile as tiff
+from osgeo import gdal
+
+
+
+```
 
 ### Run a model
-```python
-import ...
 
-```
 
 ---
 ## Standard Benchmarks
+We selected the U-Net and TransNuSeg models to experiment with the dataset. The models' performance scores are presented below. 
+
+![image](visual_setup/models_performance.png)
+
+Further results analysis are reported in the Paper: <>
 
 ---
 ## Citation
