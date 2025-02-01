@@ -340,7 +340,7 @@ with torch.no_grad():
     inputs = data.to(device)
 
     # Prediction
-    y_pred = Tmodel(inputs)
+    y_pred = model(inputs)
 
     # GPU to CPU
     y_predmax = y_pred.argmax(1).cpu().numpy()
