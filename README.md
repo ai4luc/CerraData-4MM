@@ -52,6 +52,11 @@ CerraData-4MM comprises sets of SAR and MSI data, followed by semantic maps for 
 
 ## Tutorial
 
+First of all, you have to install all packs for this tutorial. Thus, download the file `environment.yml` to create a conda env. 
+```
+
+```
+
 ### Data Downloading
 You can download the dataset using the `kagglehub` Python package. Below is an example of how to download the latest version of the dataset:
 
