@@ -282,35 +282,14 @@ for epoch in range(100):
 
 
 ### Run a model
-To download the trained models you have to: 
-1 - Get the Google Drive file ID from the shareable link, e.g., https://drive.google.com/file/d/XYZ123/view → ID is XYZ123 (See in CerraData-4MM Experiments/models Section). 
-2 - Use the direct download URL with confirm=1 to bypass the virus scan warning page.
-3 - Use requests to download and save the file.
+To download one of the trained models you have to:
 
 ```python
-import requests
-
-def download_public_zip(file_id, output_path):
-    # Direct download URL template
-    url = f"https://drive.google.com/uc?export=download&id={file_id}&confirm=1"
-
-    # Send a GET request to download the file
-    session = requests.Session()
-    response = session.get(url, stream=True)
-
-    # Save the content to a ZIP file
-    with open(output_path, "wb") as f:
-        for chunk in response.iter_content(chunk_size=1024 * 1024):  # 1MB chunks
-            if chunk:
-                f.write(chunk)
-
-# Obtaining the data
-file_id = "YOUR_FILE_ID"  # Replace with the Google Drive file ID
-output_path = "downloaded_file.zip"
-download_public_zip(file_id, output_path)
+import kagglehub
+...
 ```
 
-Afterwards, you are able to load them. For example, 
+Afterwards, you are able to load it on your application. For example, 
 
 ```python
 import torch
