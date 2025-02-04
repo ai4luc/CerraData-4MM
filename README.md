@@ -373,7 +373,17 @@ Read the full paper at <>.
 ---
 ## Citation
 ```
-It is not available.
+
+@misc{miranda2025cerradata4mmmultimodalbenchmarkdataset,
+      title={CerraData-4MM: A multimodal benchmark dataset on Cerrado for land use and land cover classification},
+      author={Mateus de Souza Miranda and Ronny Hänsch and Valdivino Alexandre de Santiago Júnior and Thales Sehn Körting and Erison Carlos dos Santos Monteiro},
+      year={2025},
+      eprint={2502.00083},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2502.00083},
+}
+
 ```
 ---
 ## Contact
