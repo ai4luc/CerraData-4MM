@@ -2,7 +2,7 @@
 
 # CerraData-4MM - A Multimodal Dataset on Cerrado for Land Use and Land Cover Classification
 
-CerraData-4MM is a multimodal dataset focusing on the Bico do Papagaio ecoregion within the Cerrado biome. This dataset is designed to support regional studies and applications aimed at the conservation and management of this unique and biodiverse biome, which lies in a transitional area with the Amazon forest. The dataset includes two modalities of data: **multispectral patches** (12 channels) and **Synthetic Aperture Radar (SAR) patches** (2 channels). Each modality contains **30,291 image patches** of size **128x128 pixels** with a spatial resolution of **10 meters**. The dataset is enriched by its hierarchical organization into two levels of classes, making it a valuable resource for land use and land cover classification tasks.
+CerraData-4MM is a multimodal dataset focusing on the Bico do Papagaio ecoregion within the Cerrado biome. This dataset is designed to support regional studies and applications aimed at the conservation and management of this unique and biodiverse biome, which lies in a transitional area with the Amazon forest. The dataset includes two modalities of data: **multispectral patches** (12 channels) and **Synthetic Aperture Radar (SAR) patches** (2 channels). Each modality contains **30,291 image patches** of size **128x128 pixels** with a spatial resolution of **10 meters**. The dataset is enriched by its hierarchical organization into two levels of classes, making it a valuable resource for land use and land cover classification tasks. <b>Read the full paper at <https://doi.org/10.48550/arXiv.2502.00083>.</b>
 
 ---
 
@@ -368,7 +368,8 @@ U-Net exhibits even more unsatisfactory performance; in the “Concat-NW-L2” s
 
 ![image](visual_setup/models_performance.png)
 
-Read the full paper at <>.
+Read the full paper at <
+https://doi.org/10.48550/arXiv.2502.00083>.
 
 ---
 ## Citation
