@@ -52,9 +52,16 @@ CerraData-4MM comprises sets of SAR and MSI data, followed by semantic maps for 
 
 ## Tutorial
 
-First of all, you have to install all packs for this tutorial. Thus, download the file `environment.yml` to create a conda env. 
+First of all, you have to install the packs for this tutorial. Thus, download the file `environment.yml` to create a conda env. 
+- Installing dependencies with `Conda`: 
+```
+conda env create -f environment.yml
+conda activate cerra
 ```
 
+- Installing dependencies with `Pip`:
+```
+pip install -r requirements.txt
 ```
 
 ### Data Downloading
