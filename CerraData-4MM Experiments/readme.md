@@ -2,16 +2,16 @@
 
 The trained models are available at:
 
-1 - Trained models on Concatenated modalities: <br>
-U-Net: https://drive.google.com/file/d/1VrgKq8C_HUu1PWgMAJlaiP5A-QCNuOVl/view?usp=sharing <br>
-TransNuSeg: https://drive.google.com/file/d/1az0uMkUXGejQXjXpnmz1dZ1dJeqiQJVe/view?usp=sharing <br>
+```
+import kagglehub
 
-2 - Trained models on MSI modality: 
-U-Net: https://drive.google.com/file/d/1egFlzj8u3jx2y8oXfGIdRGKzz8xNNYH_/view?usp=sharing <br>
-TransNuSeg: https://drive.google.com/file/d/11WtxIHEtA9kikjlEFAydxinpn-u9Vn7G/view?usp=sharing<br>
+# Download latest version
+path = kagglehub.dataset_download("cerranet/trained-models-on-cerradata-4mm")
 
-3 - Trained models on SAR modality: 
-U-Net: https://drive.google.com/file/d/1UO6bgMDRZ_kl4j-SwEDFx_cgNqs3OKlv/view?usp=sharing <br>
-TransNuSeg: https://drive.google.com/file/d/1KZk7DQqGG5s6_wy9D2Wgd_ekExQlUU1o/view?usp=sharing <br>
+print("Path to dataset files:", path)
+```
+
+Both U-Net and TransNuSeg were trained in three primary scenarios: i) using both modalities, SAR and MSI; ii) using only MSI; and iii) using only SAR images. These scenarios were considered in two cases: a) data balancing with weights, and b) without weights.
+As a result, you will find three directories (concat, msi, and sar) containing both models in each directory. 
 
 ---
