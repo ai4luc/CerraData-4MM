@@ -150,7 +150,7 @@ U-Net exhibits even more unsatisfactory performance; in the “Concat-NW-L2” s
 ![image](visual_setup/models_performance.png)
 
 Read the full paper at <
-https://doi.org/10.48550/arXiv.2502.00083>.
+https://doi.org/10.48550/arXiv.2502.00083 >.
 
 ---
 ## Citation
