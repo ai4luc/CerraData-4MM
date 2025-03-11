@@ -6,9 +6,9 @@ import geopandas as gpd
 from shapely.geometry import shape
 
 # copernicus User email
-copernicus_user = "mateus.miranda@inpe.br"
+copernicus_user = "#"
 # copernicus User Password
-copernicus_password = "7cV*7p@m2979"
+copernicus_password = "#"
 # WKT Representation of BBOX of AOI
 ft = "POLYGON ((-49.52605078855572 -5.0331624789304215, -49.52605078855572 -9.963749831522662, -46.040522177447826 -9.963749831522662, -46.040522177447826 -5.0331624789304215, -49.52605078855572 -5.0331624789304215))"
 # Sentinel satellite that you are interested in
